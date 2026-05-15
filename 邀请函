@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>广西雄骏软件邀请函 - 极简回复区</title>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #2b2a2a 0%, #1a1c1e 100%);
+            font-family: 'Segoe UI', 'Roboto', 'Noto Sans', system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            font-size: 20px;
+            padding: 32px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toolbar {
+            max-width: 760px;
+            width: 100%;
+            margin: 0 auto 20px auto;
+            text-align: right;
+        }
+
+        .save-img-btn {
+            background: #ffffffdd;
+            backdrop-filter: blur(8px);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #6b3f1c;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.2s;
+            font-family: inherit;
+            border: 1px solid #ffefcf;
+        }
+
+        .save-img-btn:hover {
+            background: #faeac9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+        }
+
+        .invitation-card {
+            max-width: 760px;
+            width: 100%;
+            margin: 0 auto;
+            background: #fffef7;
+            border-radius: 0 0 48px 28px;
+            overflow: hidden;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 215, 150, 0.3);
+        }
+
+        .hero-section {
+            background: linear-gradient(112deg, #422f1b 0%, #2c241a 100%);
+            padding: 44px 32px 36px 32px;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid #e6b861;
+        }
+
+        .hero-section::before {
+            font-size: 64px;
+            position: absolute;
+            bottom: -24px;
+            right: 32px;
+            opacity: 0.2;
+            transform: rotate(5deg);
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(230, 184, 97, 0.2);
+            backdrop-filter: blur(4px);
+            color: #f9e2b7;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            padding: 8px 24px;
+            border-radius: 40px;
+            border: 1px solid #e6b86180;
+            margin-bottom: 28px;
+        }
+
+        .company-name {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #ecd9b4;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #fff2e0;
+            margin: 18px 0 12px;
+            letter-spacing: -0.3px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .sub {
+            font-size: 1rem;
+            color: #f0dbb6;
+            border-top: 1px dashed #e6b86160;
+            display: inline-block;
+            padding-top: 14px;
+            margin-top: 12px;
+        }
+
+        .film-title {
+            background: #fcf7ef;
+            padding: 36px 32px 28px 32px;
+            text-align: center;
+            border-bottom: 1px solid #f0e5d6;
+        }
+
+        .film-icon {
+            font-size: 58px;
+            display: block;
+            margin-bottom: 18px;
+        }
+
+        .film-name {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #b45c2c;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            letter-spacing: 1px;
+        }
+
+        .film-quote {
+            font-size: 0.9rem;
+            color: #8b6f4c;
+            margin-top: 14px;
+            font-style: italic;
+        }
+
+        .content {
+            padding: 36px 36px 44px;
+        }
+
+        .info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: #fefaf5;
+            padding: 20px 28px;
+            border-radius: 36px;
+            border: 1px solid #faeedf;
+        }
+
+        .info-icon {
+            font-size: 38px;
+            min-width: 56px;
+            text-align: center;
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .info-text h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #2e241d;
+            margin-bottom: 8px;
+        }
+
+        .info-text p {
+            font-size: 1rem;
+            color: #5e4b34;
+            line-height: 1.5;
+        }
+
+        .address-detail {
+            font-size: 0.85rem;
+            color: #b3743c;
+            margin-top: 6px;
+            display: inline-block;
+            background: #fff1e4;
+            padding: 4px 16px;
+            border-radius: 30px;
+        }
+
+        .timeline {
+            background: #fff9f2;
+            border-radius: 40px;
+            padding: 28px 32px;
+            margin: 28px 0 32px;
+            border: 1px solid #f5e5d4;
+        }
+
+        .timeline h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #a4642c;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            border-left: 5px solid #e6b861;
+            padding-left: 18px;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 22px;
+            align-items: baseline;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .step-time {
+            width: 100px;
+            font-weight: 700;
+            color: #c2813e;
+            font-size: 0.95rem;
+        }
+
+        .step-desc {
+            flex: 1;
+            color: #3f3324;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .step-desc small {
+            font-weight: normal;
+            color: #9b7c5e;
+            font-size: 0.85rem;
+        }
+
+        .gift-tag {
+            background: #fff0e0;
+            color: #b6591c;
+            padding: 16px 24px;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            font-weight: 500;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            width: 100%;
+            justify-content: center;
+            border: 1px solid #eac394;
+        }
+
+        /* 极简 RSVP 区域 */
+        .rsvp-box {
+            background: #f1e7db;
+            border-radius: 40px;
+            padding: 28px 32px;
+            margin: 40px 0 32px;
+            text-align: center;
+        }
+
+        .rsvp-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #2c3a2b;
+            margin-bottom: 16px;
+        }
+
+        .reply-mini {
+            font-size: 0.95rem;
+            color: #4a3922;
+            margin-bottom: 12px;
+        }
+
+        .reply-mini strong {
+            color: #b85b1e;
+        }
+
+        .note-rsvp {
+            font-size: 0.85rem;
+            color: #886e4b;
+            border-top: 1px dashed #d9c2aa;
+            padding-top: 16px;
+            margin-top: 8px;
+        }
+
+        .footer-note {
+            border-top: 2px dotted #eedbcb;
+            margin-top: 24px;
+            padding-top: 28px;
+            text-align: center;
+            color: #8f7659;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .footer-note span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 16px;
+                font-size: 18px;
+            }
+            .content {
+                padding: 24px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .film-name {
+                font-size: 1.8rem;
+            }
+            .info-item {
+                padding: 16px 20px;
+            }
+            .step-time {
+                width: auto;
+            }
+            .rsvp-title {
+                font-size: 1.4rem;
+            }
+            .timeline h4 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="toolbar">
+    <button class="save-img-btn" id="downloadBtn">📸 保存邀请函为图片 (PNG)</button>
+</div>
+<div class="invitation-card" id="captureArea">
+    <div class="hero-section">
+        <div class="badge">✨ 尊享客户专场 · 仅限受邀贵宾 ✨</div>
+        <div class="company-name">广西雄骏软件有限公司</div>
+        <h1>光影之约 · 感恩同行</h1>
+        <div class="sub">客户专属观影会 诚邀您莅临</div>
+    </div>
+
+    <div class="film-title">
+        <span class="film-icon">🎞️🎬</span>
+        <div class="film-name">《给阿嬷的情书》</div>
+        <div class="film-quote">“江海有岸 · 团圆可盼”</div>
+    </div>
+
+    <div class="content">
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-icon">📅</div>
+                <div class="info-text">
+                    <h3>活动时间</h3>
+                    <p><strong>2026年5月23日 (周六) 入场14:20</strong><br>签到：14:00</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">📍</div>
+                <div class="info-text">
+                    <h3>活动地点</h3>
+                    <p><strong>泰和民族宫影城（梦之岛百货店）</strong><br>南宁市青秀区民族大道49号·梦之岛百货5楼<br>
+                        <span class="address-detail">🚇 地铁1号线民族广场站A出口</span>
+                    </p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">🎁</div>
+                <div class="info-text">
+                    <h3>专属礼遇</h3>
+                    <p>到场客户均可获赠 <strong>「雄骏感恩伴手礼」</strong> 一份</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <h4>📋 活动流程预览</h4>
+            <div class="step">
+                <div class="step-time">14:00-14:20</div>
+                <div class="step-desc">✨ 嘉宾签到 · 领取伴手礼 · 自由合影</div>
+            </div>
+            <div class="step">
+                <div class="step-time">14:20-14:45</div>
+                <div class="step-desc">🎤 开场致辞 & 暖心互动（致谢客户）</div>
+            </div>
+            <div class="step">
+                <div class="step-time">14:45-16:43</div>
+                <div class="step-desc">🍿 沉浸观影《给阿嬷的情书》| 感动口碑大片</div>
+            </div>
+            <div class="step">
+                <div class="step-time">16:43-16:45</div>
+                <div class="step-desc">📸 大合影留念 <small>(活动预计3小时)</small></div>
+            </div>
+            <div class="gift-tag">
+                🎁 每位客户均享 「定制伴手礼」+ 活动云相册记录
+            </div>
+        </div>
+
+        <!-- 极简席位预留 -->
+        <div class="rsvp-box">
+            <div class="rsvp-title">🎟️ 席位预留 · 敬请回复</div>
+            <div class="reply-mini">请回复 <strong>【姓名+人数】</strong> 至您的客户经理</div>
+            <div class="note-rsvp">⏰ 请于5月21日前回复，以便预留席位及伴手礼</div>
+        </div>
+
+        <div class="footer-note">
+            <span>🏢 广西雄骏软件有限公司 敬邀</span>
+            <span>💝 期待与您共度光影时光</span>
+        </div>
+        <div style="font-size: 0.75rem; text-align: center; margin-top: 28px; color: #c5ae8f; border-top: 1px solid #f3e8dd; padding-top: 18px;">
+            * 本活动最终解释权归广西雄骏软件有限公司所有
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const downloadBtn = document.getElementById('downloadBtn');
+        const captureElement = document.getElementById('captureArea');
+
+        async function downloadInvitationAsImage() {
+            if (!captureElement) return;
+            const originalText = downloadBtn.innerText;
+            downloadBtn.innerText = '⏳ 生成图片中，请稍候...';
+            downloadBtn.disabled = true;
+
+            try {
+                const canvas = await html2canvas(captureElement, {
+                    scale: 3,
+                    backgroundColor: '#fffef7',
+                    useCORS: false,
+                    logging: false,
+                    allowTaint: false
+                });
+                const link = document.createElement('a');
+                const imageData = canvas.toDataURL('image/png');
+                link.download = 'Guangxi_XiongJun_Invitation.png';
+                link.href = imageData;
+                link.click();
+            } catch (error) {
+                console.error('截图生成失败: ', error);
+                alert('生成图片失败，可尝试刷新页面后重试。\n错误详情：' + (error.message || '未知错误'));
+            } finally {
+                downloadBtn.innerText = originalText;
+                downloadBtn.disabled = false;
+            }
+        }
+
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', downloadInvitationAsImage);
+        }
+    })();
+</script>
+</body>
+</html>
